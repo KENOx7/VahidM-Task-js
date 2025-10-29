@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            display: block;
+            margin: 5px 0;
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="change(+1)">+</button>
+    <button onclick="change(-1)">-</button>
+    <div id="inp">
+        <input type="number">
+        <input type="number">
+    </div>
+    <button onclick="hesabla()">Hesabla</button>
+    <button onclick="avrg()">Ədədi orta</button>
+    <h1 id="son"></h1>
+
+    <script>
+        const inp = document.getElementById('inp')
+        let n = 2
+
+        function change(quant) {
+            n += quant
+            if (n < 1) n = 1
+            let kod = ''
+            for (let i = 0; i < n; i++) {
+                kod += '<input type="number">'
+            }
+            inp.innerHTML = kod
+        }
+
+        function hesabla() {
+            const arr = inp.querySelectorAll('input')
+            let son = document.getElementById('son')
+            let sum = 0
+            for (let i = 0; i < arr.length; i++) {
+                sum += +arr[i].value
+            }
+            son.innerHTML = sum
+        }
+        function avrg(){
+            const arr = inp.querySelectorAll('input')
+            let son = document.getElementById('son')
+            let say = 0
+            let sum = 0
+            for (let i = 0; i < arr.length; i++) {
+                if(arr[i].value!=''){
+                    sum+=+arr[i].value
+                    say+=1
+                }
+            }
+            let avg = sum/say
+            son.innerHTML=avg
+
+            
+        }
+    </script>
+</body>
+
+</html>
